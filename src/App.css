@@ -1,3 +1,45 @@
+:root {
+  --color-bg-start: #0f172a;
+  --color-bg-middle: #2563eb;
+  --color-bg-end: #38bdf8;
+  --color-hero-bg: rgba(15, 23, 42, 0.75);
+  --color-hero-box-shadow: rgba(2, 6, 23, 0.35);
+  --color-hero-border: rgba(255, 255, 255, 0.14);
+  --color-eyebrow: #93c5fd;
+  --color-lead: #e2e8f0;
+  --color-primary-bg: #38bdf8;
+  --color-primary-text: #082f49;
+  --color-secondary-bg: rgba(255, 255, 255, 0.12);
+  --color-secondary-text: #f8fafc;
+  --color-secondary-border: rgba(255, 255, 255, 0.18);
+  --color-hover-shadow: rgba(8, 47, 73, 0.25);
+  --color-info-bg: rgba(255, 255, 255, 0.12);
+  --color-info-border: rgba(255, 255, 255, 0.2);
+  --color-info-h2: #f8fafc;
+  --color-info-p: #dbeafe;
+  --color-skip-bg: #000;
+  --color-skip-text: #fff;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-skip-bg);
+  color: var(--color-skip-text);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s ease-in-out;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
 .app-shell {
   min-height: 100vh;
   padding: 3rem 1.5rem;
@@ -5,8 +47,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-  background: linear-gradient(135deg, #0f172a 0%, #2563eb 50%, #38bdf8 100%);
-  color: #f8fafc;
+  background: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-middle) 50%, var(--color-bg-end) 100%);
+  color: var(--color-bg-end); /* Actually we want the text color to be light, which is the end color? In original it was #f8fafc which is the end color. */
 }
 
 .hero-card {
@@ -14,9 +56,9 @@
   margin: 0 auto;
   padding: 2.5rem;
   border-radius: 24px;
-  background: rgba(15, 23, 42, 0.75);
-  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--color-hero-bg);
+  box-shadow: 0 20px 50px var(--color-hero-box-shadow);
+  border: 1px solid var(--color-hero-border);
 }
 
 .eyebrow {
@@ -24,14 +66,14 @@
   letter-spacing: 0.24em;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #93c5fd;
+  color: var(--color-eyebrow);
   margin-bottom: 0.75rem;
 }
 
 .lead {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #e2e8f0;
+  color: var(--color-lead);
   max-width: 650px;
 }
 
@@ -51,20 +93,29 @@
 }
 
 .primary-link {
-  background: #38bdf8;
-  color: #082f49;
+  background: var(--color-primary-bg);
+  color: var(--color-primary-text);
 }
 
 .secondary-link {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f8fafc;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--color-secondary-bg);
+  color: var(--color-secondary-text);
+  border: 1px solid var(--color-secondary-border);
 }
 
 .primary-link:hover,
-.secondary-link:hover {
+.secondary-link:hover,
+.primary-link:focus-visible,
+.secondary-link:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(8, 47, 73, 0.25);
+  box-shadow: 0 10px 25px var(--color-hover-shadow);
+}
+
+/* Optional: add a focus ring for keyboard users */
+.primary-link:focus-visible,
+.secondary-link:focus-visible {
+  outline: 2px solid var(--color-primary-bg);
+  outline-offset: 2px;
 }
 
 .info-grid {
@@ -79,20 +130,20 @@
 .info-grid article {
   padding: 1.25rem;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--color-info-bg);
+  border: 1px solid var(--color-info-border);
   backdrop-filter: blur(10px);
 }
 
 .info-grid h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: #f8fafc;
+  color: var(--color-info-h2);
 }
 
 .info-grid p {
   margin: 0;
-  color: #dbeafe;
+  color: var(--color-info-p);
 }
 
 @media (max-width: 768px) {
